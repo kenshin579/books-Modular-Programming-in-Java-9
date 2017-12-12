@@ -4,12 +4,12 @@ public class Contact implements Comparable{
 
     private String firstName;
     private String lastName;
-	private String phoneNumber;
+    private String phoneNumber;
 
     public Contact(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
-		this.phoneNumber = phoneNumber;
+	    this.phoneNumber = phoneNumber;
     }
 
     public String getFirstName() {
