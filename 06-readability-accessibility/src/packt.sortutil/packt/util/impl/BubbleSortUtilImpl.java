@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class BubbleSortUtilImpl {
 
+    @SuppressWarnings("unchecked")
     public <T extends Comparable> List<T> sortList(List<T> list) {
         for (int outer = 0; outer < list.size() - 1; outer++) {
                 for (int inner = 0; inner < list.size()-outer-1; inner++) {
