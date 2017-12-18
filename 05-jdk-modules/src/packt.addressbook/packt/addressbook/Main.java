@@ -24,7 +24,7 @@ public class Main {
         ContactLoader contactLoader = new ContactLoader();
 		SortUtil sortUtil = new SortUtil();
         try {
-            contacts = contactLoader.parseXml("/Users/kkothagal/code/java9/input.xml");
+            contacts = contactLoader.parseXml("../input.xml");
         } catch (ContactLoadException e) {
 			logger.severe(e.getMessage());
             System.exit(0);

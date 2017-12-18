@@ -40,7 +40,7 @@ public class Main extends Application {
 		ContactLoader contactLoader = new ContactLoader();
 		SortUtil sortUtil = new SortUtil();
 		try {
-			contacts = contactLoader.parseXml("/Users/kkothagal/Documents/workspace-new/java-xml/input.txt");
+			contacts = contactLoader.parseXml("../input.xml");
 		} catch (ContactLoadException e) {
 
 			System.exit(0);
