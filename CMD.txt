@@ -1,0 +1,209 @@
+각장 제목 
+
+1장 자바 9 모듈 소개 
+2장 첫번째 자바 모듈 만들기 
+3장 모듈간 의존성 다루기 
+4장 모듈화 JDK 소개 
+5장 플랫폼 API 사용하기
+6장 모듈 레졸루션, 접근성과 가독성 
+7장 서비스 소개 
+8장 링킹의 이해와 jlink 활용 
+9장 모듈 설계 패턴과 전략 
+10장 자바 9을 위한 코드 준비하기
+11장 자바 9 코드로 마이그레이션
+12장 빌드 도구 활용과 자바 모듈 테스팅 
+
+>> 코드 실행 
+
+2장 
+
+javac -d out --module-source-path src --module packt.addressbook
+java --module-path out --module packt.addressbook/packt.addressbook.Main
+
+[Babbage 123-456-7890, Berners-Lee 456-789-0123, Dijkstra 345-678-9012, Lovelace 234-567-8901, Turing 456-789-0123]
+
+3장 
+
+javac -d out --module-source-path src --module packt.addressbook,packt.sortutil
+java --module-path out -m packt.addressbook/packt.addressbook.Main
+
+[Babbage 123-456-7890, Berners-Lee 456-789-0123, Dijkstra 345-678-9012, Lovelace 234-567-8901, Turing 456-789-0123]
+
+4장 
+java --list-modules 
+java -d java.base
+java -d java.sql
+java --module-path out --list-modules
+
+
+5장 
+java --list-modules 
+java -d java.logging
+javac --module-source-path src -d out --module packt.addressbook,packt.sortutil
+java --module-path out -m packt.addressbook/packt.addressbook.Main 
+javac --module-source-path src -d out $(find . -name '*.java')
+
+java --module-path out -m packt.addressbook/packt.addressbook.Main
+java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
+
+6장 
+javac --module-source-path src -d out $(find . -name '*.java')
+
+java --module-path out -m app/packt.app.App
+java -d javafx.controls
+
+7장 
+javac --module-source-path src -d out $(find src/ -name '*.java')
+java --module-path out -m packt.addressbook/packt.addressbook.Main
+
+> requires java.logging 
+import java.util.logging.Logger; 
+private static final Logger logger = Logger.getLogger(Main.class.getName());
+> find: failed to read file names from file system at or below ‘src’: No such file or directory 이런 에러 날때  
+> bubblesort는 max4 이므로 채택되지 않는다 
+
+---
+javac --module-source-path src -d out $(find src/ -name '*.java')
+java --module-path out -m packt.addressbook/packt.addressbook.Main
+java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
+
+
+8장 
+java --module-path out -m packt.addressbook/packt.addressbook.Main
+java --show-module-resolution --module-path out -m packt.addressbook/packt.addressbook.Main
+
+jlink --module-path out --add-modules packt.addressbook.ui --output image
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --output image
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --output image
+>윈도우는 ; 로 교체 
+>%JAVA_HOME%\jmods 로 교체 
+>%JAVA_HOME% 에 space가 있으면 안되서 이동시켜놓음 :: D:\work\jdk-9.0.1
+> --output 이 없다고 나오면 도스창에서 실행하면 됨 :: Error: --output must be specified 
+
+image/bin/java -m packt.addressbook.ui/packt.addressbook.ui.Main
+image/bin/java -m packt.addressbook/packt.addressbook.Main
+java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
+
+cd image/
+bin/java --list-modules
+
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui,packt.sort.bubblesort,packt.sort.javasort --output image
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui,packt.sort.bubblesort,packt.sort.javasort --output image
+
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --bind-services --output image
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --bind-services --output image
+> 164MB 
+
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --bind-services --compress=1 --output image1
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --bind-services --compress=1 --output image1
+> 128MB
+
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --bind-services --compress=2 --output image2
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --bind-services --compress=2 --output image2
+> 96.9MB 
+
+jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --bind-services --compress=2 --include-locales=en --output image3
+jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --bind-services --compress=2 --include-locales=en --output image3
+> 89.6MB 
+
+jlink --list-plugins
+
+
+jar --create --file out/contact.jar --module-version=1.0 -C out/packt.contact .
+jar --create --file out/addressbook-ui.jar --module-version=1.0 --main-class=packt.addressbook.ui.Main -C out/packt.addressbook.ui .
+
+rm -rf out/packt.contact/
+rm -rf out/packt.addressbook.ui/
+java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
+
+
+9장
+(9.1~2)
+javac --module-source-path src -p src -d out $(find . -name '*.java')
+java --module-path out -m consumer/app.Main
+
+(9-3)
+javac --module-source-path src -p src -d out $(find . -name '*.java')
+java --module-path out --add-modules pattern.three.optlib -m consumer/app.Main
+java --module-path out -m consumer/app.Main
+
+(9-4)
+javac --module-source-path src -p src -d out $(find . -name '*.java')
+java --module-path out --add-modules pattern.four.optlib -m consumer/app.Main
+
+(9.6, 9.9)
+javac --module-source-path src -p src -d out $(find . -name '*.java')
+java --module-path out -m consumer/app.Main
+
+
+10장
+(10.1)
+java --version
+mkdir out
+javac -cp lib/commons-collections4-4.1.jar -d out $(find . -name '*.java')
+
+java -cp out:lib/commons-collections4-4.1.jar com.packt.sortstrings.app.App
+java -cp out;lib/commons-collections4-4.1.jar com.packt.sortstrings.app.App
+
+(10.2)
+javac -d out $(find . -name '*.java') (java8은ok / java9는컴파일 오류)
+jdeps -jdkinternals -cp out/
+jdeps -jdkinternals commons-collections4-4.1.jar
+
+javac -d out src/packt/app/AppFixed.java --add-exports java.base/sun.util.calendar=ALL-UNNAMED 
+java -d jdk.unsupported
+
+
+11장 
+(11.1)
+없음 
+
+(11.2)
+mkdir out
+javac --module-source-path src -d out $(find . -name '*.java')  
+javac --module-source-path src -cp lib/commons-collections4-4.1.jar -d out $(find src/ -name '*.java')
+javac --module-source-path src --module-path lib -d out $(find . -name '*.java')
+
+java --module-path out:lib ?m packt.shoppingbag/com.packt.shoppingbag.app.App
+java --module-path out;lib ?m packt.shoppingbag/com.packt.shoppingbag.app.App
+
+jdeps -cp lib/commons-collections4-4.1.jar -recursive -summary out
+jdeps --generate-module-info out lib/commons-collections4-4.1.jar
+
+(11.3)
+javac --module-source-path src --module-path lib -d out $(find . -name '*.java')
+
+java --module-path out:lib ?m packt.app/com.packt.app.App
+java --module-path out;lib ?m packt.app/com.packt.app.App
+
+(11.4)
+mkdir out
+mkdir out/base
+mkdir out/9
+
+javac --release 7 -d out/base base/src/packt/mylib/PrintList.java
+javac --release 9 -d out/9 java9/src/packt.mylib/module-info.java java9/src/packt.mylib/packt/mylib/PrintList.java
+
+jar -cf mylib.jar MANIFEST.MF -C out/base .
+jar -uf mylib.jar --release 9 -C out/9 . 
+
+
+12장 
+(12.1)
+mvn -v
+mvn clean install  (root폴더)
+mvn exec:exec      (root/main 폴더)
+
+
+(12.2)
+javac -d out --module-source-path src --module packt.sortutil,packt.sortutil.test
+java -ea --module-path out:lib --module packt.sortutil.test/packt.util.test.SortUtilTestMain
+java -ea --module-path out;lib --module packt.sortutil.test/packt.util.test.SortUtilTestMain
+
+javac -d out --module-source-path src --module-path lib --module packt.sortutil,packt.sortutil.test
+java --module-path out:lib --module junit/org.junit.runner.JUnitCore packt.util.test.SortUtilTest
+java --module-path out;lib --module junit/org.junit.runner.JUnitCore packt.util.test.SortUtilTest
+
+java --module-path out:lib --add-modules packt.sortutil.test --module junit/org.junit.runner.JUnitCore packt.util.test.SortUtilTest
+java --module-path out;lib --add-modules packt.sortutil.test --module junit/org.junit.runner.JUnitCore packt.util.test.SortUtilTest
+
