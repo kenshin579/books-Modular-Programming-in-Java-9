@@ -1,42 +1,42 @@
-°¢Àå Á¦¸ñ 
+ï»¿ê°ì¥ ì œëª© 
 
-1Àå ÀÚ¹Ù 9 ¸ğµâ ¼Ò°³ 
-2Àå Ã¹¹øÂ° ÀÚ¹Ù ¸ğµâ ¸¸µé±â 
-3Àå ¸ğµâ°£ ÀÇÁ¸¼º ´Ù·ç±â 
-4Àå ¸ğµâÈ­ JDK ¼Ò°³ 
-5Àå ÇÃ·§Æû API »ç¿ëÇÏ±â
-6Àå ¸ğµâ ·¹Á¹·ç¼Ç, Á¢±Ù¼º°ú °¡µ¶¼º 
-7Àå ¼­ºñ½º ¼Ò°³ 
-8Àå ¸µÅ·ÀÇ ÀÌÇØ¿Í jlink È°¿ë 
-9Àå ¸ğµâ ¼³°è ÆĞÅÏ°ú Àü·« 
-10Àå ÀÚ¹Ù 9À» À§ÇÑ ÄÚµå ÁØºñÇÏ±â
-11Àå ÀÚ¹Ù 9 ÄÚµå·Î ¸¶ÀÌ±×·¹ÀÌ¼Ç
-12Àå ºôµå µµ±¸ È°¿ë°ú ÀÚ¹Ù ¸ğµâ Å×½ºÆÃ 
+1ì¥ ìë°” 9 ëª¨ë“ˆ ì†Œê°œ 
+2ì¥ ì²«ë²ˆì§¸ ìë°” ëª¨ë“ˆ ë§Œë“¤ê¸° 
+3ì¥ ëª¨ë“ˆê°„ ì˜ì¡´ì„± ë‹¤ë£¨ê¸° 
+4ì¥ ëª¨ë“ˆí™” JDK ì†Œê°œ 
+5ì¥ í”Œë«í¼ API ì‚¬ìš©í•˜ê¸°
+6ì¥ ëª¨ë“ˆ ë ˆì¡¸ë£¨ì…˜, ì ‘ê·¼ì„±ê³¼ ê°€ë…ì„± 
+7ì¥ ì„œë¹„ìŠ¤ ì†Œê°œ 
+8ì¥ ë§í‚¹ì˜ ì´í•´ì™€ jlink í™œìš© 
+9ì¥ ëª¨ë“ˆ ì„¤ê³„ íŒ¨í„´ê³¼ ì „ëµ 
+10ì¥ ìë°” 9ì„ ìœ„í•œ ì½”ë“œ ì¤€ë¹„í•˜ê¸°
+11ì¥ ìë°” 9 ì½”ë“œë¡œ ë§ˆì´ê·¸ë ˆì´ì…˜
+12ì¥ ë¹Œë“œ ë„êµ¬ í™œìš©ê³¼ ìë°” ëª¨ë“ˆ í…ŒìŠ¤íŒ… 
 
->> ÄÚµå ½ÇÇà 
+>> ì½”ë“œ ì‹¤í–‰ 
 
-2Àå 
+2ì¥ 
 
 javac -d out --module-source-path src --module packt.addressbook
 java --module-path out --module packt.addressbook/packt.addressbook.Main
 
 [Babbage 123-456-7890, Berners-Lee 456-789-0123, Dijkstra 345-678-9012, Lovelace 234-567-8901, Turing 456-789-0123]
 
-3Àå 
+3ì¥ 
 
 javac -d out --module-source-path src --module packt.addressbook,packt.sortutil
 java --module-path out -m packt.addressbook/packt.addressbook.Main
 
 [Babbage 123-456-7890, Berners-Lee 456-789-0123, Dijkstra 345-678-9012, Lovelace 234-567-8901, Turing 456-789-0123]
 
-4Àå 
+4ì¥ 
 java --list-modules 
 java -d java.base
 java -d java.sql
 java --module-path out --list-modules
 
 
-5Àå 
+5ì¥ 
 java --list-modules 
 java -d java.logging
 javac --module-source-path src -d out --module packt.addressbook,packt.sortutil
@@ -46,21 +46,21 @@ javac --module-source-path src -d out $(find . -name '*.java')
 java --module-path out -m packt.addressbook/packt.addressbook.Main
 java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
 
-6Àå 
+6ì¥ 
 javac --module-source-path src -d out $(find . -name '*.java')
 
 java --module-path out -m app/packt.app.App
 java -d javafx.controls
 
-7Àå 
+7ì¥ 
 javac --module-source-path src -d out $(find src/ -name '*.java')
 java --module-path out -m packt.addressbook/packt.addressbook.Main
 
 > requires java.logging 
 import java.util.logging.Logger; 
 private static final Logger logger = Logger.getLogger(Main.class.getName());
-> find: failed to read file names from file system at or below ¡®src¡¯: No such file or directory ÀÌ·± ¿¡·¯ ³¯¶§  
-> bubblesort´Â max4 ÀÌ¹Ç·Î Ã¤ÅÃµÇÁö ¾Ê´Â´Ù 
+> find: failed to read file names from file system at or below â€˜srcâ€™: No such file or directory ì´ëŸ° ì—ëŸ¬ ë‚ ë•Œ  
+> bubblesortëŠ” max4 ì´ë¯€ë¡œ ì±„íƒë˜ì§€ ì•ŠëŠ”ë‹¤ 
 
 ---
 javac --module-source-path src -d out $(find src/ -name '*.java')
@@ -68,17 +68,17 @@ java --module-path out -m packt.addressbook/packt.addressbook.Main
 java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
 
 
-8Àå 
+8ì¥ 
 java --module-path out -m packt.addressbook/packt.addressbook.Main
 java --show-module-resolution --module-path out -m packt.addressbook/packt.addressbook.Main
 
 jlink --module-path out --add-modules packt.addressbook.ui --output image
 jlink --module-path $JAVA_HOME/jmods:out --add-modules packt.addressbook.ui --output image
 jlink --module-path %JAVA_HOME%\jmods;out --add-modules packt.addressbook.ui --output image
->À©µµ¿ì´Â ; ·Î ±³Ã¼ 
->%JAVA_HOME%\jmods ·Î ±³Ã¼ 
->%JAVA_HOME% ¿¡ space°¡ ÀÖÀ¸¸é ¾ÈµÇ¼­ ÀÌµ¿½ÃÄÑ³õÀ½ :: D:\work\jdk-9.0.1
-> --output ÀÌ ¾ø´Ù°í ³ª¿À¸é µµ½ºÃ¢¿¡¼­ ½ÇÇàÇÏ¸é µÊ :: Error: --output must be specified 
+>ìœˆë„ìš°ëŠ” ; ë¡œ êµì²´ 
+>%JAVA_HOME%\jmods ë¡œ êµì²´ 
+>%JAVA_HOME% ì— spaceê°€ ìˆìœ¼ë©´ ì•ˆë˜ì„œ ì´ë™ì‹œì¼œë†“ìŒ :: D:\work\jdk-9.0.1
+> --output ì´ ì—†ë‹¤ê³  ë‚˜ì˜¤ë©´ ë„ìŠ¤ì°½ì—ì„œ ì‹¤í–‰í•˜ë©´ ë¨ :: Error: --output must be specified 
 
 image/bin/java -m packt.addressbook.ui/packt.addressbook.ui.Main
 image/bin/java -m packt.addressbook/packt.addressbook.Main
@@ -117,7 +117,7 @@ rm -rf out/packt.addressbook.ui/
 java --module-path out -m packt.addressbook.ui/packt.addressbook.ui.Main
 
 
-9Àå
+9ì¥
 (9.1~2)
 javac --module-source-path src -p src -d out $(find . -name '*.java')
 java --module-path out -m consumer/app.Main
@@ -136,7 +136,7 @@ javac --module-source-path src -p src -d out $(find . -name '*.java')
 java --module-path out -m consumer/app.Main
 
 
-10Àå
+10ì¥
 (10.1)
 java --version
 mkdir out
@@ -146,7 +146,7 @@ java -cp out:lib/commons-collections4-4.1.jar com.packt.sortstrings.app.App
 java -cp out;lib/commons-collections4-4.1.jar com.packt.sortstrings.app.App
 
 (10.2)
-javac -d out $(find . -name '*.java') (java8Àºok / java9´ÂÄÄÆÄÀÏ ¿À·ù)
+javac -d out $(find . -name '*.java') (java8ì€ok / java9ëŠ”ì»´íŒŒì¼ ì˜¤ë¥˜)
 jdeps -jdkinternals -cp out/
 jdeps -jdkinternals commons-collections4-4.1.jar
 
@@ -154,9 +154,9 @@ javac -d out src/packt/app/AppFixed.java --add-exports java.base/sun.util.calend
 java -d jdk.unsupported
 
 
-11Àå 
+11ì¥ 
 (11.1)
-¾øÀ½ 
+ì—†ìŒ 
 
 (11.2)
 mkdir out
@@ -188,11 +188,11 @@ jar -cf mylib.jar MANIFEST.MF -C out/base .
 jar -uf mylib.jar --release 9 -C out/9 . 
 
 
-12Àå 
+12ì¥ 
 (12.1)
 mvn -v
-mvn clean install  (rootÆú´õ)
-mvn exec:exec      (root/main Æú´õ)
+mvn clean install  (rootí´ë”)
+mvn exec:exec      (root/main í´ë”)
 
 
 (12.2)
