@@ -39,7 +39,7 @@ public class Main extends Application {
 		List<Contact> contacts = new ArrayList<>();
 		ContactLoader contactLoader = new ContactLoader();
 		try {
-			contacts = contactLoader.parseXml("/Users/kkothagal/Documents/workspace-new/java-xml/input.txt");
+			contacts = contactLoader.parseXml("../input.xml");
 		} catch (ContactLoadException e) {
 
 			System.exit(0);
