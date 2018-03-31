@@ -1,4 +1,4 @@
-package pattern.nine.external;
+package pattern.ten.external;
 
 import module.one.external.ApiOne;
 import module.two.external.ApiTwo;

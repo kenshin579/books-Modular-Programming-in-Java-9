@@ -1,5 +1,5 @@
-module pattern.nine.facade {
+module pattern.ten.facade {
     requires transitive module.one;
     requires transitive module.two;
-    exports pattern.nine.external;
+    exports pattern.ten.external;
 }

@@ -1,6 +1,6 @@
 package app;
 
-import pattern.nine.external.FacadeApi;
+import pattern.ten.external.FacadeApi;
 import module.two.external.ApiTwo;
 
 public class Main {

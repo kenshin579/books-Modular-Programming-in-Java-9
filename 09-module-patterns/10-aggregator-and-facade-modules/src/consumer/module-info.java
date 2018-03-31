@@ -1,3 +1,3 @@
 module consumer {
-    requires pattern.nine.facade;
+    requires pattern.ten.facade;
 }
