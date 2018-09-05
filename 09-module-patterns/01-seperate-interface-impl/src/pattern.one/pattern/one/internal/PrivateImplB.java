@@ -8,6 +8,4 @@ public class PrivateImplB implements PublicInterface {
     public void publicApi() {
         System.out.println("Called implementation in PrivateImplB");
     }
-
-   
 }

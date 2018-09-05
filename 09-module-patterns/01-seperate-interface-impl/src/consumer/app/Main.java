@@ -9,7 +9,5 @@ public class Main {
         Factory factory = new Factory();
         PublicInterface obj = factory.getApiInstance(false);
         obj.publicApi();
-
-        
     }
 }
