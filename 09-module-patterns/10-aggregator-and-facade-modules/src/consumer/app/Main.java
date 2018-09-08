@@ -11,7 +11,5 @@ public class Main {
 
         facade.facadeMethod("one"); // Calling the API through the facade
         apiTwo.apiMethod(); // Calling the other API directly
-
-        
     }
 }
