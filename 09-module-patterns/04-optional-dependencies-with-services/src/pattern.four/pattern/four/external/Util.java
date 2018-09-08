@@ -11,9 +11,5 @@ public class Util {
         for (LibInterface libInstance : libInstances) {
             libInstance.publicApi();
         }
-       
-        
     }
-
-
 }

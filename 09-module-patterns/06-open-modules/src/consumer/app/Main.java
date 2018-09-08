@@ -8,11 +8,10 @@ public class Main {
         try {
             Class clazz = Class.forName("pattern.six.internal.Contact");
             Constructor<?> ctor = clazz.getConstructor();
-            Object object = ctor.newInstance(new Object[] {  });
+            Object object = ctor.newInstance(new Object[]{});
             System.out.println("Successfully created object using reflection");
         } catch (ReflectiveOperationException e) {
             System.out.println("Did not find the Impl class module");
         }
-        
     }
 }

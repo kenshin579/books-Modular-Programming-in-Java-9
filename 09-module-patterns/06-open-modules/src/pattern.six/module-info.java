@@ -1,3 +1,3 @@
 open module pattern.six {
-    
+
 }
