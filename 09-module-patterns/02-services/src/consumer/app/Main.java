@@ -3,8 +3,6 @@ package app;
 import pattern.two.external.PublicInterface;
 
 import java.util.ServiceLoader;
-import java.util.ServiceLoader.Provider;
-
 
 public class Main {
 
@@ -13,8 +11,5 @@ public class Main {
         for (PublicInterface i : impls) {
             i.publicApi();
         }
-        
-
-        
     }
 }
